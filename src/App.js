@@ -11,7 +11,75 @@ function Home() {
         <h2>CalcHub</h2>
       </nav>
 
-      <div className="hero">
+<div className="hero">
+    <h1>All-in-One Free Calculator Hub</h1>
+    <p>GST, EMI, Profit, Discount & More — Fast, Accurate & Free</p>
+
+    <button className="cta-btn" onClick={() => window.scrollTo({ top: 600, behavior: "smooth" })}>
+    Start Calculating
+  </button>
+</div>
+    
+
+<div className="content">
+  <h2 className="section-title">Why Choose CalcHub?</h2>
+  <div className="card-grid">
+    
+    <div className="info-card">
+      <h3>⚡ Fast & Instant</h3>
+      <p>Get accurate results instantly without any delay or loading time.</p>
+    </div>
+
+    <div className="info-card">
+      <h3>🎯 Easy to Use</h3>
+      <p>Simple interface designed for students, professionals, and everyone.</p>
+    </div>
+
+    <div className="info-card">
+      <h3>💯 Accurate Results</h3>
+      <p>All calculators use standard formulas to ensure precise calculations.</p>
+    </div>
+
+    <div className="info-card">
+      <h3>🆓 Completely Free</h3>
+      <p>No sign-up, no hidden charges. Use all tools for free anytime.</p>
+    </div>
+
+    <div className="info-card">
+      <h3>📊 Multiple Tools</h3>
+      <p>GST, EMI, Profit, Discount, Time & YouTube earnings in one place.</p>
+    </div>
+
+    <div className="info-card">
+      <h3>🔒 Safe & Secure</h3>
+      <p>Your data stays private. No data is stored or shared.</p>
+    </div>
+
+  </div>
+</div>
+
+<div className="content">
+  <h2 className="section-title">Why People Trust CalcHub</h2>
+  <div className="card-grid">
+
+    <div className="info-card">
+      <h3>🌍 Used Worldwide</h3>
+      <p>Accessible from anywhere, anytime on any device.</p>
+    </div>
+
+    <div className="info-card">
+      <h3>⚡ No Login Needed</h3>
+      <p>Start using instantly without creating an account.</p>
+    </div>
+
+    <div className="info-card">
+      <h3>📱 Mobile Friendly</h3>
+      <p>Fully responsive design for phones, tablets, and desktops.</p>
+    </div>
+  </div>
+</div>
+
+       <div className="content">
         <h1>Free Online Calculators - GST, EMI, Profit & More</h1>
         <p>Use our free tools to calculate GST, EMI, profit, discounts and more instantly.</p>
         <p>Click a calculator to start</p>
