@@ -94,6 +94,21 @@ function Home() {
         <div className="card" onClick={() => navigate("/youtube")}>📺<h3>YouTube Earnings</h3></div>
       </div>
 
+    <div className="content">
+  <h2>What is CalcHub?</h2>
+  <p>
+    CalcHub is a free online calculator platform that helps users perform
+    financial and daily calculations easily. From GST and EMI calculations
+    to profit and discount tools, everything is available in one place.
+  </p>
+
+  <h2>How It Works</h2>
+  <p>
+    Simply select a calculator, enter your values, and get instant results.
+    All tools are designed for accuracy and ease of use.
+  </p>
+</div>
+
       <footer className="footer">
         <p>© 2026 CalcHub</p>
         <div>
@@ -364,27 +379,117 @@ function YouTubeCalc() {
 
 function About() {
   return (
-    <div>
-      <h1>About Us</h1>
-      <p>CalcHub is an all-in-one calculator platform designed to make daily calculations simple and fast.</p>
+    <div style={{ padding: "40px", maxWidth: "800px", margin: "auto" }}>
+      <h1>About CalcHub</h1>
+
+      <p>
+        CalcHub is a free online calculator platform designed to simplify everyday
+        calculations. Whether you need to calculate GST, EMI, profit margins, or discounts,
+        CalcHub provides fast and accurate tools that help you get results instantly.
+      </p>
+
+      <p>
+        Our goal is to make complex calculations easy and accessible for everyone,
+        including students, professionals, and business owners. Instead of performing
+        manual calculations, users can rely on our tools to get precise results in seconds.
+      </p>
+
+      <p>
+        All calculators on CalcHub are built using standard mathematical formulas
+        to ensure accuracy and reliability. We continuously improve our platform
+        by adding new tools and enhancing user experience.
+      </p>
+
+      <p>
+        CalcHub is completely free to use and does not require any registration.
+        Our mission is to provide simple, fast, and reliable calculation tools
+        for users worldwide.
+      </p>
     </div>
   );
 }
 
 function Contact() {
   return (
-    <div>
+    <div style={{ padding: "40px", maxWidth: "800px", margin: "auto" }}>
       <h1>Contact Us</h1>
-      <p>Email: calchub.support@gmail.com</p>
+
+      <p>
+        If you have any questions, suggestions, or feedback regarding CalcHub,
+        we would love to hear from you.
+      </p>
+
+      <p>
+        Your feedback helps us improve our calculators and provide a better
+        experience for all users.
+      </p>
+
+      <p>
+        For support, business inquiries, or general questions, please contact us at:
+      </p>
+
+      <p><strong>Email:</strong> calchub.support@gmail.com</p>
+
+      <p>
+        We aim to respond to all messages as quickly as possible.
+      </p>
     </div>
   );
 }
 
 function PrivacyPolicy() {
   return (
-    <div>
+    <div style={{ padding: "40px", maxWidth: "800px", margin: "auto" }}>
       <h1>Privacy Policy</h1>
-      <p>We respect your privacy and do not collect personal data without consent.</p>
+
+      <p>
+        At CalcHub, we value your privacy and are committed to protecting your
+        personal information. This Privacy Policy explains how we handle data
+        when you use our website.
+      </p>
+
+      <h2>Information We Collect</h2>
+      <p>
+        We do not require users to create an account or provide personal data.
+        However, we may collect non-personal information such as browser type,
+        device information, and usage data to improve our services.
+      </p>
+
+      <h2>How We Use Information</h2>
+      <p>
+        The information collected is used to improve website performance,
+        enhance user experience, and analyze how users interact with our tools.
+      </p>
+
+      <h2>Cookies</h2>
+      <p>
+        CalcHub may use cookies to improve functionality and user experience.
+        Cookies help us understand user behavior and optimize our website.
+      </p>
+
+      <h2>Third-Party Services</h2>
+      <p>
+        We may use third-party services such as Google AdSense to display ads.
+        These services may use cookies to provide relevant advertisements.
+      </p>
+
+      <h2>Data Security</h2>
+      <p>
+        We take reasonable steps to protect your information. However, no method
+        of data transmission over the internet is completely secure.
+      </p>
+
+      <h2>Changes to This Policy</h2>
+      <p>
+        We may update this Privacy Policy at any time. Changes will be posted
+        on this page.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        If you have any questions about this Privacy Policy, contact us at:
+        calchub.support@gmail.com
+      </p>
     </div>
   );
 }
