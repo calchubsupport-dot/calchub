@@ -12,10 +12,13 @@ function Home() {
       </nav>
 
 <div className="hero">
-    <h1>All-in-One Free Calculator Hub</h1>
-    <p>GST, EMI, Profit, Discount & More — Fast, Accurate & Free</p>
+  <h1>All-in-One Free Calculator Hub</h1>
+  <p>GST, EMI, Profit, Discount & More — Fast, Accurate & Free</p>
 
-    <button className="cta-btn" onClick={() => window.scrollTo({ top: 600, behavior: "smooth" })}>
+  <button 
+    className="cta-btn" 
+    onClick={() => document.getElementById("tools").scrollIntoView({ behavior: "smooth" })}
+  >
     Start Calculating
   </button>
 </div>
@@ -85,7 +88,7 @@ function Home() {
         <p>Click a calculator to start</p>
       </div>
 
-      <div className="grid">
+      <div id="tools" className="grid">
         <div className="card" onClick={() => navigate("/profit")}>💰<h3>Profit & Loss</h3></div>
         <div className="card" onClick={() => navigate("/gst")}>🧾<h3>GST Calculator</h3></div>
         <div className="card" onClick={() => navigate("/discount")}>🏷️<h3>Discount</h3></div>
