@@ -1,6 +1,12 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
+  background: #0f2027;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: white;
 }
@@ -180,45 +186,111 @@ body {
   margin-bottom: 10px;
 }
 
-.info-card p {
-  font-size: 14px;
-  color: #ccc;
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 40px 20px;
+}
+
+.info-card {
+  padding: 25px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  color: white;
+  transition: 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.info-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .hero {
   text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: white;
 }
 
 .hero h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 
 .hero p {
-  font-size: 18px;
-  opacity: 0.8;
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 30px;
 }
 
 .cta-btn {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 8px;
-  background: #38bdf8;
-  color: black;
+  padding: 14px 28px;
   font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .cta-btn:hover {
-  transform: scale(1.05);
-  background: #0ea5e9;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 114, 255, 0.5);
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.tagline {
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  margin-top: 50px;
 }
