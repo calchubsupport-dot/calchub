@@ -132,3 +132,98 @@ html {
     transform: translateY(0);
   }
 }
+
+/* PREMIUM CARD UI */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.card span {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+/* CARD BASE */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 25px;
+  text-align: center;
+  color: white;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+/* ICON */
+.card span {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* TITLE */
+.card h3 {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+/* HOVER EFFECT */
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 255, 200, 0.6),
+              0 0 50px rgba(0, 255, 200, 0.3);
+  border: 1px solid rgba(0, 255, 200, 0.6);
+}
+
+/* OPTIONAL: SOFT GLOW ANIMATION */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(0,255,200,0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0,255,200,0.7);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0,255,200,0.3);
+  }
+}
+
+.card:hover {
+  animation: glowPulse 1.5s infinite;
+}

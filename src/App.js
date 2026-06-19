@@ -88,14 +88,39 @@ function Home() {
         <p>Click a calculator to start</p>
       </div>
 
-      <div id="tools" className="grid">
-        <div className="card" onClick={() => navigate("/profit")}>💰<h3>Profit & Loss</h3></div>
-        <div className="card" onClick={() => navigate("/gst")}>🧾<h3>GST Calculator</h3></div>
-        <div className="card" onClick={() => navigate("/discount")}>🏷️<h3>Discount</h3></div>
-        <div className="card" onClick={() => navigate("/emi")}>🏦<h3>EMI</h3></div>
-        <div className="card" onClick={() => navigate("/time")}>⏱️<h3>Time</h3></div>
-        <div className="card" onClick={() => navigate("/youtube")}>📺<h3>YouTube Earnings</h3></div>
-      </div>
+      <div id="tools" className="card-grid">
+
+  <div className="card" onClick={() => navigate("/profit")}>
+    <span>💰</span>
+    <h3>Profit & Loss</h3>
+  </div>
+
+  <div className="card" onClick={() => navigate("/gst")}>
+    <span>🧾</span>
+    <h3>GST Calculator</h3>
+  </div>
+
+  <div className="card" onClick={() => navigate("/discount")}>
+    <span>🏷️</span>
+    <h3>Discount</h3>
+  </div>
+
+  <div className="card" onClick={() => navigate("/emi")}>
+    <span>🏦</span>
+    <h3>EMI</h3>
+  </div>
+
+  <div className="card" onClick={() => navigate("/time")}>
+    <span>⏱️</span>
+    <h3>Time</h3>
+  </div>
+
+  <div className="card" onClick={() => navigate("/youtube")}>
+    <span>📺</span>
+    <h3>YouTube Earnings</h3>
+  </div>
+
+</div>
 
     <div className="content">
   <h2>What is CalcHub?</h2>
