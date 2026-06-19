@@ -190,6 +190,14 @@ function EMI() {
   const [time, setTime] = React.useState("");
   const [emi, setEmi] = React.useState(null);
 
+  const [emiHistory, setEmiHistory] = React.useState([]);
+
+  // LOAD HISTORY
+  React.useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("emiHistory")) || [];
+    setEmiHistory(saved);
+  }, []);
+
   const calculateEMI = () => {
     const P = parseFloat(amount);
     const R = parseFloat(rate) / 12 / 100;
@@ -204,20 +212,75 @@ function EMI() {
       (P * R * Math.pow(1 + R, N)) /
       (Math.pow(1 + R, N) - 1);
 
-    setEmi(result.toFixed(2));
+    const finalEmi = result.toFixed(2);
+    setEmi(finalEmi);
+
+    const newEntry = {
+      amount,
+      rate,
+      time,
+      emi: finalEmi
+    };
+
+    const updatedHistory = [newEntry, ...emiHistory];
+    setEmiHistory(updatedHistory);
+    localStorage.setItem("emiHistory", JSON.stringify(updatedHistory));
+  };
+
+  // 🗑️ DELETE SINGLE ITEM
+  const deleteItem = (index) => {
+    const updated = emiHistory.filter((_, i) => i !== index);
+    setEmiHistory(updated);
+    localStorage.setItem("emiHistory", JSON.stringify(updated));
+  };
+
+  // ❌ CLEAR ALL
+  const clearAll = () => {
+    setEmiHistory([]);
+    localStorage.removeItem("emiHistory");
   };
 
   return (
-    <div style={{ padding: "40px", textAlign: "center" }}>
+    <div className="calc-container">
       <h1>🏦 EMI Calculator</h1>
 
-      <input placeholder="Loan Amount" value={amount} onChange={(e) => setAmount(e.target.value)} /><br /><br />
-      <input placeholder="Interest Rate (%)" value={rate} onChange={(e) => setRate(e.target.value)} /><br /><br />
-      <input placeholder="Time (Years)" value={time} onChange={(e) => setTime(e.target.value)} /><br /><br />
+      <input
+        placeholder="Loan Amount"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      /><br /><br />
+
+      <input
+        placeholder="Interest Rate (%)"
+        value={rate}
+        onChange={(e) => setRate(e.target.value)}
+      /><br /><br />
+
+      <input
+        placeholder="Time (Years)"
+        value={time}
+        onChange={(e) => setTime(e.target.value)}
+      /><br /><br />
 
       <button onClick={calculateEMI}>Calculate</button>
 
       {emi && <h2>EMI: ₹ {emi} / month</h2>}
+
+      {/* HISTORY */}
+      {emiHistory.length > 0 && (
+        <div>
+          <h3>📜 History</h3>
+
+          <button onClick={clearAll}>❌ Clear All</button>
+
+          {emiHistory.map((item, index) => (
+            <div key={index}>
+              ₹{item.amount} | {item.rate}% | {item.time} yrs → EMI ₹{item.emi}
+              <button onClick={() => deleteItem(index)}>🗑️</button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -226,6 +289,14 @@ function GST() {
   const [amount, setAmount] = React.useState("");
   const [gst, setGst] = React.useState("");
   const [result, setResult] = React.useState(null);
+
+  const [history, setHistory] = React.useState([]);
+
+  // LOAD HISTORY
+  React.useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("gstHistory")) || [];
+    setHistory(saved);
+  }, []);
 
   const calculateGST = () => {
     const price = parseFloat(amount);
@@ -243,14 +314,42 @@ function GST() {
       gstAmount: gstAmount.toFixed(2),
       total: total.toFixed(2),
     });
+
+    const newEntry = `₹${price} + ${rate}% = ₹${total.toFixed(2)}`;
+    const updatedHistory = [newEntry, ...history];
+
+    setHistory(updatedHistory);
+    localStorage.setItem("gstHistory", JSON.stringify(updatedHistory));
+  };
+
+  // 🗑️ DELETE ONE
+  const deleteItem = (index) => {
+    const updated = history.filter((_, i) => i !== index);
+    setHistory(updated);
+    localStorage.setItem("gstHistory", JSON.stringify(updated));
+  };
+
+  // ❌ CLEAR ALL
+  const clearAll = () => {
+    setHistory([]);
+    localStorage.removeItem("gstHistory");
   };
 
   return (
-    <div style={{ padding: "40px", textAlign: "center" }}>
+    <div className="calc-container">
       <h1>🧾 GST Calculator</h1>
 
-      <input placeholder="Original Amount" value={amount} onChange={(e)=>setAmount(e.target.value)} /><br /><br />
-      <input placeholder="GST %" value={gst} onChange={(e)=>setGst(e.target.value)} /><br /><br />
+      <input
+        placeholder="Original Amount"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      /><br /><br />
+
+      <input
+        placeholder="GST %"
+        value={gst}
+        onChange={(e) => setGst(e.target.value)}
+      /><br /><br />
 
       <button onClick={calculateGST}>Calculate</button>
 
@@ -258,6 +357,24 @@ function GST() {
         <div>
           <h3>GST: ₹ {result.gstAmount}</h3>
           <h2>Total: ₹ {result.total}</h2>
+        </div>
+      )}
+
+      {/* HISTORY */}
+      {history.length > 0 && (
+        <div>
+          <h3>📜 History</h3>
+
+          <button onClick={clearAll}>❌ Clear All</button>
+
+          <ul>
+            {history.map((item, index) => (
+              <li key={index}>
+                {item}
+                <button onClick={() => deleteItem(index)}>🗑️</button>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>
@@ -268,6 +385,14 @@ function ProfitLossCalc() {
   const [cost, setCost] = React.useState("");
   const [sell, setSell] = React.useState("");
   const [result, setResult] = React.useState("");
+
+  const [plHistory, setPlHistory] = React.useState([]);
+
+  // LOAD HISTORY
+  React.useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("plHistory")) || [];
+    setPlHistory(saved);
+  }, []);
 
   const calculate = () => {
     const c = parseFloat(cost);
@@ -281,25 +406,77 @@ function ProfitLossCalc() {
     const diff = s - c;
     const percent = ((diff / c) * 100).toFixed(2);
 
+    let finalResult = "";
+
     if (diff > 0) {
-      setResult(`Profit: ₹${diff} (${percent}%)`);
+      finalResult = `Profit: ₹${diff} (${percent}%)`;
     } else if (diff < 0) {
-      setResult(`Loss: ₹${Math.abs(diff)} (${percent}%)`);
+      finalResult = `Loss: ₹${Math.abs(diff)} (${percent}%)`;
     } else {
-      setResult("No Profit No Loss");
+      finalResult = "No Profit No Loss";
     }
+
+    setResult(finalResult);
+
+    const newEntry = {
+      cost,
+      sell,
+      result: finalResult
+    };
+
+    const updatedHistory = [newEntry, ...plHistory];
+    setPlHistory(updatedHistory);
+    localStorage.setItem("plHistory", JSON.stringify(updatedHistory));
+  };
+
+  // 🗑️ DELETE ONE
+  const deleteItem = (index) => {
+    const updated = plHistory.filter((_, i) => i !== index);
+    setPlHistory(updated);
+    localStorage.setItem("plHistory", JSON.stringify(updated));
+  };
+
+  // ❌ CLEAR ALL
+  const clearAll = () => {
+    setPlHistory([]);
+    localStorage.removeItem("plHistory");
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "40px" }}>
+    <div className="calc-container">
       <h1>💰 Profit & Loss Calculator</h1>
 
-      <input placeholder="Cost Price" value={cost} onChange={(e)=>setCost(e.target.value)} /><br /><br />
-      <input placeholder="Selling Price" value={sell} onChange={(e)=>setSell(e.target.value)} /><br /><br />
+      <input
+        placeholder="Cost Price"
+        value={cost}
+        onChange={(e) => setCost(e.target.value)}
+      /><br /><br />
+
+      <input
+        placeholder="Selling Price"
+        value={sell}
+        onChange={(e) => setSell(e.target.value)}
+      /><br /><br />
 
       <button onClick={calculate}>Calculate</button>
 
       <h2>{result}</h2>
+
+      {/* HISTORY */}
+      {plHistory.length > 0 && (
+        <div>
+          <h3>📜 History</h3>
+
+          <button onClick={clearAll}>❌ Clear All</button>
+
+          {plHistory.map((item, index) => (
+            <div key={index}>
+              ₹{item.cost} → ₹{item.sell} = {item.result}
+              <button onClick={() => deleteItem(index)}>🗑️</button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -308,6 +485,14 @@ function DiscountCalc() {
   const [price, setPrice] = React.useState("");
   const [discount, setDiscount] = React.useState("");
   const [result, setResult] = React.useState("");
+
+  const [discountHistory, setDiscountHistory] = React.useState([]);
+
+  // LOAD HISTORY
+  React.useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("discountHistory")) || [];
+    setDiscountHistory(saved);
+  }, []);
 
   const calculate = () => {
     const p = parseFloat(price);
@@ -318,22 +503,71 @@ function DiscountCalc() {
       return;
     }
 
-    const saved = (p * d) / 100;
-    const final = p - saved;
+    const savedAmount = (p * d) / 100;
+    const final = p - savedAmount;
 
-    setResult(`Final Price: ₹${final} | You Save: ₹${saved}`);
+    const finalResult = `Final Price: ₹${final.toFixed(2)} | You Save: ₹${savedAmount.toFixed(2)}`;
+    setResult(finalResult);
+
+    const newEntry = {
+      price,
+      discount,
+      result: finalResult
+    };
+
+    const updatedHistory = [newEntry, ...discountHistory];
+    setDiscountHistory(updatedHistory);
+    localStorage.setItem("discountHistory", JSON.stringify(updatedHistory));
+  };
+
+  // 🗑️ DELETE ONE
+  const deleteItem = (index) => {
+    const updated = discountHistory.filter((_, i) => i !== index);
+    setDiscountHistory(updated);
+    localStorage.setItem("discountHistory", JSON.stringify(updated));
+  };
+
+  // ❌ CLEAR ALL
+  const clearAll = () => {
+    setDiscountHistory([]);
+    localStorage.removeItem("discountHistory");
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "40px" }}>
+    <div className="calc-container">
       <h1>🏷️ Discount Calculator</h1>
 
-      <input placeholder="Original Price" value={price} onChange={(e)=>setPrice(e.target.value)} /><br /><br />
-      <input placeholder="Discount %" value={discount} onChange={(e)=>setDiscount(e.target.value)} /><br /><br />
+      <input
+        placeholder="Original Price"
+        value={price}
+        onChange={(e) => setPrice(e.target.value)}
+      /><br /><br />
+
+      <input
+        placeholder="Discount %"
+        value={discount}
+        onChange={(e) => setDiscount(e.target.value)}
+      /><br /><br />
 
       <button onClick={calculate}>Calculate</button>
 
       <h2>{result}</h2>
+
+      {/* HISTORY */}
+      {discountHistory.length > 0 && (
+        <div>
+          <h3>📜 History</h3>
+
+          <button onClick={clearAll}>❌ Clear All</button>
+
+          {discountHistory.map((item, index) => (
+            <div key={index}>
+              ₹{item.price} | {item.discount}% → {item.result}
+              <button onClick={() => deleteItem(index)}>🗑️</button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -342,6 +576,14 @@ function TimeCalc() {
   const [start, setStart] = React.useState("");
   const [end, setEnd] = React.useState("");
   const [result, setResult] = React.useState("");
+
+  const [timeHistory, setTimeHistory] = React.useState([]);
+
+  // LOAD HISTORY
+  React.useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("timeHistory")) || [];
+    setTimeHistory(saved);
+  }, []);
 
   const calculate = () => {
     if (!start || !end) {
@@ -355,19 +597,72 @@ function TimeCalc() {
     let diff = (endTime - startTime) / (1000 * 60 * 60);
     if (diff < 0) diff += 24;
 
-    setResult(`Difference: ${diff} hours`);
+    // 🔥 Better format (hours + minutes)
+    const hours = Math.floor(diff);
+    const minutes = Math.round((diff - hours) * 60);
+
+    const finalResult = `Difference: ${hours}h ${minutes}m`;
+    setResult(finalResult);
+
+    const newEntry = {
+      start,
+      end,
+      result: finalResult
+    };
+
+    const updatedHistory = [newEntry, ...timeHistory];
+    setTimeHistory(updatedHistory);
+    localStorage.setItem("timeHistory", JSON.stringify(updatedHistory));
+  };
+
+  // 🗑️ DELETE ONE
+  const deleteItem = (index) => {
+    const updated = timeHistory.filter((_, i) => i !== index);
+    setTimeHistory(updated);
+    localStorage.setItem("timeHistory", JSON.stringify(updated));
+  };
+
+  // ❌ CLEAR ALL
+  const clearAll = () => {
+    setTimeHistory([]);
+    localStorage.removeItem("timeHistory");
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "40px" }}>
+    <div className="calc-container">
       <h1>⏱️ Time Calculator</h1>
 
-      <input type="time" value={start} onChange={(e)=>setStart(e.target.value)} /><br /><br />
-      <input type="time" value={end} onChange={(e)=>setEnd(e.target.value)} /><br /><br />
+      <input
+        type="time"
+        value={start}
+        onChange={(e) => setStart(e.target.value)}
+      /><br /><br />
+
+      <input
+        type="time"
+        value={end}
+        onChange={(e) => setEnd(e.target.value)}
+      /><br /><br />
 
       <button onClick={calculate}>Calculate</button>
 
       <h2>{result}</h2>
+
+      {/* HISTORY */}
+      {timeHistory.length > 0 && (
+        <div>
+          <h3>📜 History</h3>
+
+          <button onClick={clearAll}>❌ Clear All</button>
+
+          {timeHistory.map((item, index) => (
+            <div key={index}>
+              {item.start} → {item.end} = {item.result}
+              <button onClick={() => deleteItem(index)}>🗑️</button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -376,6 +671,14 @@ function YouTubeCalc() {
   const [views, setViews] = React.useState("");
   const [cpm, setCpm] = React.useState("");
   const [result, setResult] = React.useState("");
+
+  const [ytHistory, setYtHistory] = React.useState([]);
+
+  // LOAD HISTORY
+  React.useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("ytHistory")) || [];
+    setYtHistory(saved);
+  }, []);
 
   const calculate = () => {
     const v = parseFloat(views);
@@ -386,19 +689,68 @@ function YouTubeCalc() {
       return;
     }
 
-    setResult(((v / 1000) * r).toFixed(2));
+    const earnings = ((v / 1000) * r).toFixed(2);
+    setResult(earnings);
+
+    const newEntry = {
+      views,
+      cpm,
+      result: `$${earnings}`
+    };
+
+    const updatedHistory = [newEntry, ...ytHistory];
+    setYtHistory(updatedHistory);
+    localStorage.setItem("ytHistory", JSON.stringify(updatedHistory));
+  };
+
+  // 🗑️ DELETE ONE
+  const deleteItem = (index) => {
+    const updated = ytHistory.filter((_, i) => i !== index);
+    setYtHistory(updated);
+    localStorage.setItem("ytHistory", JSON.stringify(updated));
+  };
+
+  // ❌ CLEAR ALL
+  const clearAll = () => {
+    setYtHistory([]);
+    localStorage.removeItem("ytHistory");
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "40px" }}>
+    <div className="calc-container">
       <h1>📺 YouTube Earnings</h1>
 
-      <input placeholder="Views" value={views} onChange={(e)=>setViews(e.target.value)} /><br /><br />
-      <input placeholder="CPM" value={cpm} onChange={(e)=>setCpm(e.target.value)} /><br /><br />
+      <input
+        placeholder="Views"
+        value={views}
+        onChange={(e) => setViews(e.target.value)}
+      /><br /><br />
+
+      <input
+        placeholder="CPM"
+        value={cpm}
+        onChange={(e) => setCpm(e.target.value)}
+      /><br /><br />
 
       <button onClick={calculate}>Calculate</button>
 
       <h2>{result && `$${result}`}</h2>
+
+      {/* HISTORY */}
+      {ytHistory.length > 0 && (
+        <div>
+          <h3>📜 History</h3>
+
+          <button onClick={clearAll}>❌ Clear All</button>
+
+          {ytHistory.map((item, index) => (
+            <div key={index}>
+              {item.views} views | CPM {item.cpm} → {item.result}
+              <button onClick={() => deleteItem(index)}>🗑️</button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
