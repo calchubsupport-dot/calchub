@@ -8,8 +8,14 @@ function Home() {
   return (
     <div>
       <nav className="navbar">
-        <h2>CalcHub</h2>
-      </nav>
+  <h2 className="logo">CalcHub</h2>
+
+  <div className="nav-links">
+    <a href="/">Home</a>
+    <a href="/gst-guide">GST Guide</a>
+    <a href="/youtube-earnings-guide">YouTube Guide</a>
+  </div>
+</nav>
 
 <div className="hero">
   <h1>All-in-One Free Calculator Hub</h1>
@@ -874,10 +880,112 @@ function PrivacyPolicy() {
   );
 }
 
+function GstGuide() {
+  return (
+    <div className="page">
+      <h1>How GST is Calculated in India (Simple Guide)</h1>
+
+      <p>
+        Goods and Services Tax (GST) is a type of indirect tax applied to most goods and services in India.
+        It replaced many older taxes and made the system simpler and more transparent.
+      </p>
+
+      <h2>What is GST?</h2>
+      <p>
+        GST is a percentage-based tax added to the price of a product or service.
+        For example, if a product costs ₹100 and GST is 18%, the final price becomes ₹118.
+      </p>
+
+      <h2>GST Calculation Formula</h2>
+      <p>
+        GST Amount = (Original Price × GST Rate) ÷ 100
+      </p>
+      <p>
+        Final Price = Original Price + GST Amount
+      </p>
+
+      <h2>Example</h2>
+      <p>
+        Original Price = ₹500 <br />
+        GST Rate = 18% <br />
+        GST Amount = ₹90 <br />
+        Final Price = ₹590
+      </p>
+
+      <h2>Why Use a GST Calculator?</h2>
+      <ul>
+        <li>Instantly calculate tax</li>
+        <li>Avoid mistakes</li>
+        <li>Save time</li>
+        <li>Get accurate results</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>
+        GST is an important part of daily transactions. Understanding how it works helps you make better financial decisions.
+      </p>
+    </div>
+  );
+}
+
+function YoutubeGuide() {
+  return (
+    <div className="page">
+      <h1>How YouTube Earnings Are Calculated</h1>
+
+      <p>
+        Many people wonder how much money YouTubers earn from their videos.
+        The answer depends on something called CPM.
+      </p>
+
+      <h2>What is CPM?</h2>
+      <p>
+        CPM stands for "Cost Per 1000 Impressions". It means how much advertisers
+        pay for 1000 views on a video.
+      </p>
+
+      <h2>YouTube Earnings Formula</h2>
+      <p>
+        Earnings = (Views ÷ 1000) × CPM
+      </p>
+
+      <h2>Example</h2>
+      <p>
+        Views = 50,000 <br />
+        CPM = $3 <br />
+        Earnings = $150
+      </p>
+
+      <h2>Factors That Affect Earnings</h2>
+      <ul>
+        <li>Audience country</li>
+        <li>Video topic</li>
+        <li>Ad engagement</li>
+        <li>Season (ads pay more during holidays)</li>
+      </ul>
+
+      <h2>Why Use a YouTube Earnings Calculator?</h2>
+      <ul>
+        <li>Estimate income quickly</li>
+        <li>Plan your content strategy</li>
+        <li>Understand your growth potential</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>
+        YouTube earnings depend on multiple factors, but CPM is the key metric.
+        Using a calculator helps you estimate income and plan better.
+      </p>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/gst-guide" element={<GstGuide />} />
+        <Route path="/youtube-earnings-guide" element={<YoutubeGuide />} />
         <Route path="/terms" element={<Page title="Terms and Conditions" />} />
         <Route path="/" element={<Home />} />
         <Route path="/profit" element={<ProfitLossCalc />} />

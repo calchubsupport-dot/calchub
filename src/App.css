@@ -300,3 +300,66 @@ html {
 .calc-container button {
   transition: all 0.3s ease;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 30px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+
+  border-radius: 14px;
+  margin: 15px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white; /* FIX */
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #00d4ff;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  line-height: 1.7;
+}
+
+.page h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.page h2 {
+  margin-top: 25px;
+  color: #00d4ff;
+}
+
+.page p {
+  color: #ddd;
+}
+
+.page ul {
+  padding-left: 20px;
+}
