@@ -14,6 +14,8 @@ function Home() {
     <a href="/">Home</a>
     <a href="/gst-guide">GST Guide</a>
     <a href="/youtube-earnings-guide">YouTube Guide</a>
+    <a href="/emi-guide">EMI Guide</a>
+    <a href="/profit-guide">Profit Guide</a>
   </div>
 </nav>
 
@@ -980,10 +982,62 @@ function YoutubeGuide() {
   );
 }
 
+function EmiGuide() {
+  return (
+    <div className="page">
+      <h1>EMI Calculator Guide</h1>
+
+      <p>
+        EMI (Equated Monthly Installment) is the fixed amount you pay every month
+        for your loan.
+      </p>
+
+      <h2>EMI Formula</h2>
+      <p>EMI = [P × R × (1+R)^N] / [(1+R)^N – 1]</p>
+
+      <h2>Example</h2>
+      <p>Loan ₹5,00,000 at 10% for 5 years → EMI ≈ ₹10,624</p>
+
+      <h2>Why Use EMI Calculator?</h2>
+      <ul>
+        <li>Quick calculation</li>
+        <li>Accurate results</li>
+        <li>Better planning</li>
+      </ul>
+    </div>
+  );
+}
+
+function ProfitGuide() {
+  return (
+    <div className="page">
+      <h1>Profit & Loss Guide</h1>
+
+      <h2>Profit Formula</h2>
+      <p>Profit = Selling Price - Cost Price</p>
+
+      <h2>Loss Formula</h2>
+      <p>Loss = Cost Price - Selling Price</p>
+
+      <h2>Example</h2>
+      <p>Cost ₹1000, Selling ₹1200 → Profit ₹200 (20%)</p>
+
+      <h2>Why Use Calculator?</h2>
+      <ul>
+        <li>Fast</li>
+        <li>No mistakes</li>
+        <li>Easy to use</li>
+      </ul>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/emi-guide" element={<EmiGuide />} />
+        <Route path="/profit-guide" element={<ProfitGuide />} />
         <Route path="/gst-guide" element={<GstGuide />} />
         <Route path="/youtube-earnings-guide" element={<YoutubeGuide />} />
         <Route path="/terms" element={<Page title="Terms and Conditions" />} />
