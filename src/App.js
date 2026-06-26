@@ -8,7 +8,7 @@ function Home() {
   return (
     <div>
       <nav className="navbar">
-  <h2 className="logo">CalcHub</h2>
+  <h2 className="logo">CalcNumo</h2>
 
   <div className="nav-links">
     <a href="/">Home</a>
@@ -20,8 +20,8 @@ function Home() {
 </nav>
 
 <div className="hero">
-  <h1>All-in-One Free Calculator Hub</h1>
-  <p>GST, EMI, Profit, Discount & More — Fast, Accurate & Free</p>
+  <h1>CalcNumo — Smart Calculations, Simplified</h1>
+<p>GST, EMI, Profit, Discount & More — Fast, Accurate & Free</p>
 
   <button 
     className="cta-btn" 
@@ -33,7 +33,7 @@ function Home() {
     
 
 <div className="content">
-  <h2 className="section-title">Why Choose CalcHub?</h2>
+  <h2 className="section-title">Why Choose CalcNumo?</h2>
   <div className="card-grid">
     
     <div className="info-card">
@@ -70,7 +70,7 @@ function Home() {
 </div>
 
 <div className="content">
-  <h2 className="section-title">Why People Trust CalcHub</h2>
+  <h2 className="section-title">Why People Trust CalcNumo</h2>
   <div className="card-grid">
 
     <div className="info-card">
@@ -91,7 +91,7 @@ function Home() {
 </div>
 
        <div className="content">
-        <h1>Free Online Calculators - GST, EMI, Profit & More</h1>
+        <h1>Free Online Calculators by CalcNumo</h1>
         <p>Use our free tools to calculate GST, EMI, profit, discounts and more instantly.</p>
         <p>Click a calculator to start</p>
       </div>
@@ -131,9 +131,9 @@ function Home() {
 </div>
 
     <div className="content">
-  <h2>What is CalcHub?</h2>
+  <h2>What is CalcNumo?</h2>
   <p>
-    CalcHub is a free online calculator platform that helps users perform
+    CalcNumo is a free online calculator platform that helps users perform
     financial and daily calculations easily. From GST and EMI calculations
     to profit and discount tools, everything is available in one place.
   </p>
@@ -146,7 +146,7 @@ function Home() {
 </div>
 
       <footer className="footer">
-        <p>© 2026 CalcHub</p>
+        <p>© 2026 CalcNumo</p>
         <div>
           <span onClick={() => navigate("/about")}>About</span> |{" "}
           <span onClick={() => navigate("/contact")}>Contact</span> |{" "}
@@ -166,7 +166,7 @@ function Page({ title }) {
 
       {title === "Terms and Conditions" ? (
         <>
-          <p>Welcome to CalcHub!</p>
+          <p>Welcome to CalcNumo!</p>
 
           <h3>Use of the Website</h3>
           <p>This website provides free calculators for informational purposes only.</p>
@@ -768,12 +768,12 @@ function YouTubeCalc() {
 function About() {
   return (
     <div style={{ padding: "40px", maxWidth: "800px", margin: "auto" }}>
-      <h1>About CalcHub</h1>
+      <h1>About CalcNumo</h1>
 
       <p>
-        CalcHub is a free online calculator platform designed to simplify everyday
+        CalcNumo is a free online calculator platform designed to simplify everyday
         calculations. Whether you need to calculate GST, EMI, profit margins, or discounts,
-        CalcHub provides fast and accurate tools that help you get results instantly.
+        CalcNumo provides fast and accurate tools that help you get results instantly.
       </p>
 
       <p>
@@ -783,13 +783,13 @@ function About() {
       </p>
 
       <p>
-        All calculators on CalcHub are built using standard mathematical formulas
+        All calculators on CalcNumo are built using standard mathematical formulas
         to ensure accuracy and reliability. We continuously improve our platform
         by adding new tools and enhancing user experience.
       </p>
 
       <p>
-        CalcHub is completely free to use and does not require any registration.
+        CalcNumo is completely free to use and does not require any registration.
         Our mission is to provide simple, fast, and reliable calculation tools
         for users worldwide.
       </p>
@@ -803,7 +803,7 @@ function Contact() {
       <h1>Contact Us</h1>
 
       <p>
-        If you have any questions, suggestions, or feedback regarding CalcHub,
+        If you have any questions, suggestions, or feedback regarding CalcNumo,
         we would love to hear from you.
       </p>
 
@@ -831,7 +831,7 @@ function PrivacyPolicy() {
       <h1>Privacy Policy</h1>
 
       <p>
-        At CalcHub, we value your privacy and are committed to protecting your
+        At CalcNumo, we value your privacy and are committed to protecting your
         personal information. This Privacy Policy explains how we handle data
         when you use our website.
       </p>
@@ -851,7 +851,7 @@ function PrivacyPolicy() {
 
       <h2>Cookies</h2>
       <p>
-        CalcHub may use cookies to improve functionality and user experience.
+        CalcNumo may use cookies to improve functionality and user experience.
         Cookies help us understand user behavior and optimize our website.
       </p>
 
